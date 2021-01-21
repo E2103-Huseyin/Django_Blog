@@ -44,3 +44,17 @@ def post_detail(request, slug):
         "obj" : obj
     }
     return render(request, "myblog/post_detail.html", context)
+
+def post_update(request, slug):
+    obj = get_object_or_404(Post, slug=slug)
+    form = PostForm(request.POST or None, request.FILES or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect("blog:list")
+    context = {
+        "obj" : obj,
+        "form" : form
+    }
+    
+    return render(request, "myblog/post_update.html", context)
+    

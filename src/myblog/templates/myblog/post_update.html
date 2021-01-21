@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h2>UPDATE FORM</h2>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Up Dade</button>
+    </form>
+    
+    <a href="" >
+        <button type="button">DELETE</button>
+    </a>
+    <a href="{% url 'blog:list' %}" >
+        <button type="button">CANCEL</button>
+    </a>
+{% endblock  %}
+    

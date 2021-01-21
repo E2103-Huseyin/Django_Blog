@@ -14,8 +14,10 @@
         <p> {{ obj.content }} </p>
 
     
-
-    <a href="{% url 'blog:list' %}" > CANCEL</a>
+        <a href="{% url 'blog:update' obj.slug %}" >
+            <button type="button">update</button>
+        </a>
+        <a href="{% url 'blog:list' %}" > CANCEL</a>
     
 {% endblock  %}
     
