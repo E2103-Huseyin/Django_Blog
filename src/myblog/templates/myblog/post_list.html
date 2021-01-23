@@ -12,13 +12,22 @@
           <img src="{{ object.image.url }}" class="card-img-top" alt="...">
           <div class="card-body">
           <h5 class="card-title">{{ object.title }}</h5>
-          <p class="card-text">{{ object.content }}</p>
+          <p class="card-text">{{ object.content|truncatechars:20 }}</p>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
+          <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+              <div class="col">
+                <i class="far fa-thumbs-up"></i>{{object.like_count}} 
+              </div>
+              <div class="col">
+                <i class="far fa-comment-dots"></i>{{object.comment_count}}
+              </div>
+              <div class="col">
+                <i class="far fa-eye"></i>{{object.view_count}}
+              </div>
+              
+            </div>
+          </div>
           <div class="card-body">
           <a href="{% url 'blog:detail' object.slug %}" class="card-link">Card Detail</a>
           <a href="#" class="card-link">Another link</a>

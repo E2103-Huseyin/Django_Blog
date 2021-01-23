@@ -33,7 +33,15 @@ class Post(models.Model):
     def __str__(self): 
         return self.title  #admin panelinde objelerin isim listesi olarakgözükmesiiçin kod yazdık
     
+    def comment_count(self):
+        return self.comment_set.all().count()
     
+    
+    def like_count(self):
+        return self.like_set.all().count()
+    
+    def view_count(self):
+        return self.postview_set.all().count()
     
     
 class Comment(models.Model):
