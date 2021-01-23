@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 # from django.http import HttpResponse
 from .models import Post
 from .forms import PostForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -57,4 +58,17 @@ def post_update(request, slug):
     }
     
     return render(request, "myblog/post_update.html", context)
+
+def post_delete(request, slug):
+    obj = get_object_or_404(Post, slug=slug)
+    # form = PostForm(request.POST or None, request.FILE or None, instance=obj)
+    if request.method=="POST":
+        obj.delete()
+        messages.success(request, "Post deleted!!")
+        return redirect("blog:list")
     
+    context = {
+       "obj" : obj
+    }
+    
+    return render(request, "myblog/post_delete.html", context)

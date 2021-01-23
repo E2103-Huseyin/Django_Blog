@@ -10,7 +10,7 @@
         <button type="submit">Up Dade</button>
     </form>
     
-    <a href="" >
+    <a href="{% url 'blog:delete' obj.slug %}" >
         <button type="button">DELETE</button>
     </a>
     <a href="{% url 'blog:list' %}" >
