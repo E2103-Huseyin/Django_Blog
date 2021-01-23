@@ -34,6 +34,8 @@ class Post(models.Model):
         return self.title  #admin panelinde objelerin isim listesi olarakgözükmesiiçin kod yazdık
     
     
+    
+    
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
