@@ -1,10 +1,12 @@
 from django import forms
+from django.db.models import fields
 from .models import Post, Comment,Category
 
 class PostForm(forms.ModelForm):
     status = forms.ChoiceField(choices=Post.OPTIONS)
     category = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="Select")
     # ModelChoiceField: başka bir tablodaki verileri göstermemizi sağlar
+        
     class Meta:
         model = Post
         fields = (

@@ -43,6 +43,11 @@ class Post(models.Model):
     def view_count(self):
         return self.postview_set.all().count()
     
+    def text_comments(self):
+        return self.comment_set.all()
+    
+    
+    
     
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -68,3 +73,4 @@ class PostView(models.Model):
     
     def __str__(self):
         return self.user.username
+
