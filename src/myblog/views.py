@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-# from django.http import HttpResponse
+from django.http import HttpResponse
 from .models import Post,Like
 from .forms import PostForm,CommentForm
 from django.contrib import messages
@@ -59,6 +59,8 @@ def post_detail(request, slug):
 def post_update(request, slug):
     obj = get_object_or_404(Post, slug=slug)
     form = PostForm(request.POST or None, request.FILES or None, instance=obj)
+    if request.user.id != obj.author.id:
+        return HttpResponse("You're not a writer of this post")
     if form.is_valid():
         form.save()
         return redirect("blog:list")
@@ -72,6 +74,8 @@ def post_update(request, slug):
 def post_delete(request, slug):
     obj = get_object_or_404(Post, slug=slug)
     # form = PostForm(request.POST or None, request.FILE or None, instance=obj)
+    if request.user.id != obj.author.id:
+        return HttpResponse("You're not a writer of this post")
     if request.method=="POST":
         obj.delete()
         messages.success(request, "Post deleted!!")

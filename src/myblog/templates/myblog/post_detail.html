@@ -14,9 +14,14 @@
         <p> {{ obj.content }} </p>
 
     
-        <a href="{% url 'blog:update' obj.slug %}" >
-            <button type="button">update</button>
-        </a>
+    {% if user.id == obj.author.id  %}
+    <a href="{% url 'blog:update' obj.slug %}" >
+        <button type="button">update</button>
+    </a>
+        
+    {% endif %}
+        
+        
         <a href="{% url 'blog:list' %}" > CANCEL</a>
 
         <div>
