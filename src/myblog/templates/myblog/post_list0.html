@@ -14,7 +14,8 @@
                     <h5 class="card-title">{{ object.title }}</h5>
                     <p class="card-text">{{ object.content|truncatechars:50 }}</p>
                 </div>
-                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div>
+                <div class="card text-white bg-success mb-3 " style="max-width: 18rem;">
                 
                     <div class="card-body">
                         <div class="card">
@@ -23,7 +24,8 @@
                             </a>
                         </div>
                         
-                        <div class="row row-cols-1 row-cols-md-3" style="padding-top: 5px;">
+                        
+                        <div class="row row-cols-1 row-cols-3" style="padding-top: 5px;">
                             <p class="card-text">
                                 <i class="far fa-thumbs-up" style="padding-right: 10px;"></i>{{object.like_count}}
                             </p>
@@ -36,11 +38,9 @@
 
                         </div>
                         
-                        
                     </div>
 
-                    
-
+                </div>
                 </div>
 
                 <div class="card-footer">

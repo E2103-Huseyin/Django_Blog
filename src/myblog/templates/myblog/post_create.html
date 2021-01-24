@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 
 {% block content %}
 
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ forms.as_p}}
+    {{ forms|crispy }}
+    <!-- we can use crispy style with django-crispy-forms internet web site Installation  -->
     <button type="submit">POST</button>
 </form>
 <a href="{% url 'blog:list' %}" > CANCEL</a>

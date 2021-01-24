@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #my_apps
     'myblog.apps.BlogConfig',
+    # django-crispy-forms
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +125,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/"media_root"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
