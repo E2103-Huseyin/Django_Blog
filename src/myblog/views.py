@@ -16,7 +16,7 @@ def post_list(request):
     context = {
         "object_list":qs
     }
-    return render(request,"myblog/post_list.html", context)
+    return render(request,"myblog/post_list0.html", context)
 
 def post_create(request):
     # form = PostForm(request.POST or None, request.FILES or None)

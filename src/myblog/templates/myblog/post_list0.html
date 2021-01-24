@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="text-align: center;">Clarusway Blog</h1>
+
+
+
+    
+    <div class="row row-cols-1 row-cols-md-4">
+        {% for object in object_list %}
+        <div class="col mb-4">
+            <div class="card h-100">
+                <img src="{{ object.image.url }}" class="card-img-top" alt="..." style="max-height: 300px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                    <p class="card-text">{{ object.content|truncatechars:50 }}</p>
+                </div>
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                
+                    <div class="card-body">
+                        <div class="card">
+                            <a href="{% url 'blog:detail' object.slug %}" class="badge badge-warning">
+                                <h5 class="card-title">Post Detail</h5>
+                            </a>
+                        </div>
+                        
+                        <div class="row row-cols-1 row-cols-md-3" style="padding-top: 5px;">
+                            <p class="card-text">
+                                <i class="far fa-thumbs-up" style="padding-right: 10px;"></i>{{object.like_count}}
+                            </p>
+                            <p class="card-text">
+                                <i class="far fa-comment-dots" style="padding-right: 10px;"> </i>{{object.comment_count}}
+                            </p>
+                            <p class="card-text">
+                                <i class="far fa-eye" style="padding-right: 10px;"></i>{{object.view_count}}
+                            </p>
+
+                        </div>
+                        
+                        
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="card-footer">
+                    
+                    <small class="text-muted">Posted {{ object.publish_date|timesince }} ago. </small>
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        {% endfor %}
+      </div>
+   
+  
+{% endblock content %}
