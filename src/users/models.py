@@ -13,5 +13,6 @@ class Profile(models.Model):
     #on_delete=models.CASCADE => kullanıcı silinirse ona ait  profil de silisin
     image = models.ImageField(upload_to=user_profile_path , default = "user_icon.png")
     bio = models.TextField(blank=True) #blank=True => doldurulması zorunlu olmayan text
+    
     def __str__(self):
-        return self.user
+        return "{} {}".format(self.user, 'Profile')
