@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container" style="max-width: 645px; margin-top: 20px;">
+    <div >   
+
+        <div class="card mb-3" style="max-width: 640px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{{obj.image.url}}" class="img-fluid" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ obj.title }}</h5>
+                  <p class="card-text">{{ obj.content }}</p>
+                  <p class="card-text"><small class="text-muted">Last updated {{ obj.publish_date|timesince }} ago</small></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex bd-highlight">
+                <div class="p-2 flex-fill bd-highlight">
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <form action="{% url 'blog:like' obj.slug %}" method="POST">
+                            {% csrf_token %}
+                             <input type="hidden" name="post">
+                             <input type="hidden" name="user">
+                             <button type="submit" class="btn btn-outline-dark"> <i class="far fa-thumbs-up" style="padding-right: 10px;"></i>{{obj.like_count}}</button>
+                            </form>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-outline-dark"> <i class="far fa-comment-dots" style="padding-right: 10px;"></i>{{obj.comment_count}}</button>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-outline-dark"> <i class="far fa-eye" style="padding-right: 10px;"></i>{{obj.view_count}}</button>
+                        </div>
+    
+                    </div>
+                      
+                </div>
+                <div class="p-2 flex-fill bd-highlight">
+                    {% if user.id == obj.author.id  %}
+                    <a class="btn btn-primary" href="{% url 'blog:update' obj.slug %}" role="button">Update</a>
+                    {% endif %}
+                </div>
+                <div class="p-2 flex-fill bd-highlight">
+                    <a class="btn btn-secondary" href="{% url 'blog:list' %}"  role="button" style="margin-left: 20px;">CANCEL</a>
+                </div>
+            </div>
+        </div>
+    
+        <div style=" margin-top: 25px;  margin-bottom: 25px; ">
+            <div >
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-outline-primary">Comment</button>
+    
+                </form>
+            </div>
+
+            
+        </div>
+
+        
+        
+         
+    </div>
+
+    <div style=" margin-top: 25px;  margin-bottom: 25px; ">
+        
+        {% for i in obj.text_comments %}
+        <div class="card" style="margin-bottom: 25px;">
+            
+            <div class="card-header">
+                {{user.username}}
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{ i.content }}</p>
+                <footer class="blockquote-footer"><cite title="Source Title">commented at  {{i.time_stamp|timesince}} ago </cite></footer>
+              </blockquote>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% endblock  %}

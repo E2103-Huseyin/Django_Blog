@@ -54,7 +54,7 @@ def post_detail(request, slug):
         "obj" : obj,
         "form" : form
     }
-    return render(request, "myblog/post_detail.html", context)
+    return render(request, "myblog/post_detail0.html", context)
 
 def post_update(request, slug):
     obj = get_object_or_404(Post, slug=slug)
