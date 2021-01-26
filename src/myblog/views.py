@@ -49,7 +49,8 @@ def post_detail(request, slug):
             comment = form.save(commit=False)
             comment.user  = request.user
             comment.post = obj
-            comment.save() 
+            comment.save()
+            
             return redirect("blog:detail", slug=slug)
     context = {
         "obj" : obj,
@@ -96,6 +97,7 @@ def post_delete(request, slug):
 
 @login_required()
 def like(request, slug):
+    
     if request.method == "POST":
         obj = get_object_or_404(Post, slug=slug)
         like_qs = Like.objects.filter(user=request.user, post=obj )
