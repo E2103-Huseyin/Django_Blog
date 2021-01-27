@@ -4,10 +4,11 @@
 
 {% block content %}
 
-<div>
-  <h2>MY PROFILE</h2>
+<div >
+  
     <div class="container" style="max-width: 450px; margin-top: 20px; margin-bottom: 20px;">
-
+      <div class="p-3 mb-2 bg-dark text-white">
+        <h2>MY PROFILE</h2>
         <div class="media">
             <img src="{{ user.profile.image.url }}" class=" img-thumbnail align-self-start mr-3" style="width: 200px; height: 200px;" alt="...">
             <div class="media-body">
@@ -17,18 +18,26 @@
         </div>
 
         <form method="POST"  enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group">
-              <label for="formGroupExampleInput">Profile</label>
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="formGroupExampleInput">Profile</label>
               
-              {{ u_form|crispy }}
-              {{ p_form|crispy }}
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
               
-            </div>
+          </div>
+          <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-success">Update</button>
-          </form>
+            <a class="btn btn-dark" href="{% url 'blog:list' %}" role="button">CANCEL</a>
+                     
+          </div>
 
 
+          
+          
+        </form>
+
+      </div>
     </div>
 </div>
     

@@ -3,35 +3,82 @@
 
 {% block content %}
 
-
-
+<div>
     
-
-<div class="container" style="max-width: 450px; margin-top: 20px; margin-bottom: 20px;">
-
-
-    <h2>LOGIN PAGE</h2>
-    <div  class="p-3 mb-2 bg-dark text-white">
-
-        <form action="" method="POST" > 
-            <!-- enctype="multipart/form-data" -->
-            {% csrf_token %}
-            {{ form|crispy }}
-            
-            <button type="submit" class="btn btn-success">Sing in</button>
-            <small class="text-muted ml-2">
-                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        <!-- Intro settings -->
+        <style>
+          /* Default height for small devices */
+          #intro-example {
+            height: 550px;
+          }
+      
+          /* Height for devices larger than 992px */
+          @media (min-width: 992px) {
+            #intro-example {
+              height: 750px;
+            }
+          }
+        </style>
+      
+        
+      
+        <!-- Background image -->
+        <div
+          id="intro-example"
+          class="p-5 text-center bg-image"
+          style="background-image: url('https://images.pexels.com/photos/4945353/pexels-photo-4945353.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')"
+        >
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.1)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white">
+                <h1 class="mb-3">LOGIN PAGE</h1>
+                <h5 class="mb-4">People differ into two kinds: teachers & learners.<br>There is no favour outside of this two.   </h5>
                 
-            </small>
+                <form action="" method="POST" > 
+                    <!-- enctype="multipart/form-data" -->
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    
+                    <button
+                        class="btn btn-outline-light btn-lg m-2"
+                        role="button"
+                        rel="nofollow"
+                        target="_blank"
+                        type="submit"
+                    >Sing in
+                    </button>
+                    <small class="text-muted ml-2" >
+                        <a href="{% url 'password_reset' %} "> <i style="color: white;">Forgot Password?</i> </a>
+                        
+                    </small>
+        
+                    
+                
+                
+                
+                
+                <!-- <a
+                    class="btn btn-outline-light btn-lg m-2"
+                    href="{% url 'password_reset' %}"
+                    target="_blank"
+                    role="button"
+                >
+                  Forgot Password?
+                </a > -->
+                
+            </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Background image -->
+      
 
-            
-        </form>
-    </div>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Need an account?<a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
-        </small>
-    </div>
 </div>
+
+<!-- ________________ -->
+
+
+ 
 {% endblock content %}
     
